@@ -19,6 +19,9 @@ public class Main {
         var a = new int[]{1, 2, 3, 4};
         int[] b = {3, 2, 1, 0};
         System.out.println(a[(a = b)[3]]); // a[0] = 1
+
+        Object[] aa = new Object[]{}; // OK
+        Object[][] aaa = new Object[][]{new String[5], {}}; // OK
     }
     
     private static void showParallelPrefix() {

@@ -30,7 +30,7 @@ public class Main {
     
     private static void readingPosixFileAttributes() throws IOException {
         var posixFileAttributes = Files.readAttributes(Path.of("./paths/a/b/file-a-b.txt"), PosixFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-        System.out.println("=========Reading BasicFileAttributes==============");
+        System.out.println("=========Reading PosixFileAttributes==============");
         System.out.println(posixFileAttributes);
         System.out.println(posixFileAttributes.isDirectory());
         System.out.println(posixFileAttributes.creationTime());
