@@ -7,9 +7,9 @@ package concurrency;
  */
 public class Main {
     public static void main(String[] args) {
-        //trial1();
+        trial1();
         
-        trial2();
+        //trial2();
     }
     
     private static void trial2() {

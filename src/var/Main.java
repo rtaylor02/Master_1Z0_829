@@ -3,7 +3,7 @@ package var;
 import java.util.ArrayList;
 
 /**
- * @author Rodney Taylor (u228616)
+ * @author Rodney Taylor
  */
 public class Main {
     public static void main(String[] args) {
