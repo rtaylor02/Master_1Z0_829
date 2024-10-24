@@ -11,5 +11,12 @@ public class Main {
                 """;
         
         System.out.println(tb);
+
+        tb = """
+                 one space
+                  two spaces
+                    three spaces""";
+
+        System.out.println(tb);
     }
 }
