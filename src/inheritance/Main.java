@@ -14,7 +14,9 @@ public class Main {
         System.out.println("The number is: " + b.getaNumber());
         b.incrementNumber();
         System.out.println("The number is: " + b.getaNumber());
-
+        System.out.println("");
+        b.printMe();
+        B.printMe();
         System.out.println("==================");
 
         Foo foo = new Foo();
@@ -33,6 +35,10 @@ class A {
     public int getaNumber() {
         return aNumber;
     }
+
+    public static void printMe() {
+        System.out.println("static method in class A");
+    }
 }
 
 class B extends A {
@@ -42,6 +48,8 @@ class B extends A {
         aNumber++; // equivalent to this.aNumber++
         super.aNumber++;
     }
+
+    // static method printMe() from A is NOT inherited but since B is A, then by definition, B.printMe() is legit.
 }
 
 // Bar, FooBase, and Foo: Taken from Enthuware

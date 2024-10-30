@@ -1,6 +1,5 @@
 package interfaces;
 
-import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -38,6 +37,9 @@ interface I {
 
 
 
+    // public non-static is allowed in interface ==> must use 'default' as not to conflict with interface
+    // public abstract non-static methods that should not have a body ({})
+    // Default methods are inheritable.
     public default void method1() {
         System.out.println("public default");
         //ii++;
@@ -47,9 +49,13 @@ interface I {
         System.out.println("public static");
         System.out.println(ii); // This proves that ii is static. Otherwise it cannot be referenced in static method.
     }
+
+    // private non-static methods are allowed in interface.
     private void method3() {
         System.out.println("private instance");
     }
+
+    // private static methods are allowed in interface. However, it cannot be inherited.
     private static void method4() {
         System.out.println("private static");
     }

@@ -10,8 +10,8 @@ import java.sql.SQLException;
  */
 public class Main {
     public static void main(String[] args) {
-        //getConnection();
-        getConnectionWithPostgresql();
+        getConnection();
+        //getConnectionWithPostgresql();
     }
 
     private static void getConnection() {
@@ -26,8 +26,8 @@ public class Main {
      * SQLException - FATAL: password authentication failed for user "username"
      */
     private static void getConnectionWithPostgresql() {
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ocp-book",
-                "username", "password")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres",
+                "postgres", "root")) {
             System.out.println(connection);
         } catch (SQLException e) {
             System.out.println("ERROR: \nSQLException - " + e.getMessage());
