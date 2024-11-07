@@ -39,6 +39,11 @@ interface I {
 
     // public non-static is allowed in interface ==> must use 'default' as not to conflict with interface
     // public abstract non-static methods that should not have a body ({})
+    //
+    // 'default' methods:
+    // Before Java 8, interface methods are implicitly public and abstract. Abstract methods CANNOT have a body.
+    // Hence, keyword 'default' is to allow normal methods and avoid CE. Without 'default', compiler will think
+    // it's an abstract method with body, which is a CE.
     // Default methods are inheritable.
     public default void method1() {
         System.out.println("public default");
