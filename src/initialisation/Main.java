@@ -8,11 +8,23 @@ public class Main {
     }
     public static void main(String[] args) {
         System.out.println("inside main()");
+
+        finalVarCheck();
         
         //Streams main = new Streams();
         B b = new B();
     }
-    
+
+    private static void finalVarCheck() {
+        final boolean bool = true;
+        int someNumber;
+        if (bool) {
+            someNumber = 1;
+            int i = someNumber + 3;
+        }
+        System.out.println(someNumber); // CE if bool is not final
+    }
+
     static {
         System.out.println("Streams: static block 1");
         //System.out.println(staticString); // CE: forward referencing
