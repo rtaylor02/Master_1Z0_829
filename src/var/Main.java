@@ -20,5 +20,13 @@ public class Main {
         System.out.println(x.getClass().getName());
         x = args.length < 1 ? "99" : 99; // because x is a be common type between Integer and String, this is not CE.
         System.out.println(x.getClass().getName());
+
+        System.out.println("======= In combination with Integer methods =======");
+        var aa = Integer.parseInt("11");
+        var bb = Integer.valueOf("c", 16);
+        var cc = 0Xa;
+        System.out.println("cc: " + cc);
+        System.out.println(bb);
+        System.out.println(Integer.max(aa, bb));
     }
 }
