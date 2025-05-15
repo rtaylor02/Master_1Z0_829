@@ -11,15 +11,55 @@ import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
+        lazyEvaluation();
+
         //printingFromStream();
 
-        grouping();
+        //grouping();
 
         //partitioning();
 
         //mapping();
 
         //teeing();
+    }
+
+    private static void lazyEvaluation() {
+        System.out.println("Lazy evaluation = nothing happens until terminal ops occurs");
+
+        System.out.println("======== Sample 1 ========");
+        Stream.of("Andy", "David", "April", "Edward")
+                .filter(name -> {
+                    System.out.println("filter: " + name + " - intermediate ops");
+                    return true;
+                })
+                .forEach(name -> System.out.println("forEach: " + name + " - terminal ops"));
+
+        System.out.println("======== Sample 2 ========");
+        Stream.of("Andy", "David", "April", "Edward")
+                .map(name -> {
+                    System.out.println("map: " + name + " - intermediate ops");
+                    return name.toUpperCase();
+                })
+                .anyMatch(upperCaseName -> {
+                    System.out.println("anyMatch: " + upperCaseName + " - terminal ops");
+                    return upperCaseName.startsWith("D");
+                });
+
+        System.out.println("======== Sample 3 ========");
+        List<String> names = Arrays.asList("Andy", "David", "April", "Edward", "Ben", "Charlie", "Benedict", "Barry", "Dominic");
+        names.stream()
+                .peek(System.out::println)
+                .filter(name -> {
+                    System.out.println("filter1: " + name + " - intermediate ops");
+                    return name.startsWith("B") || name.startsWith("C");
+                })
+                .filter(name -> {
+                    System.out.println("filter2: " + name + " - intermediate ops");
+                    return name.length() > 3;
+                })
+                .limit(1)
+                .forEach(System.out::println);
     }
 
     private static void printingFromStream() {
