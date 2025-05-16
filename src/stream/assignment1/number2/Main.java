@@ -4,10 +4,10 @@ import java.util.function.Supplier;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Invoking supplier():");
+        // 2a - Using custom functional interface - Retrievable
         supplier();
 
-        System.out.println("Using Supplier functional interface:");
+        // 2b - Using Supplier functional interface
         Supplier<Integer> supplier = () -> 77;
         System.out.println(supplier.get());
     }

@@ -4,12 +4,16 @@ import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Invoking consumer():");
+        // 1a - Using custom functional interface - Printable
         consumer();
 
-        System.out.println("Using Consumer functional interface:");
-        Consumer<String> methodInference = System.out::println;
-        methodInference.accept("Printable lambda");
+        // 1b - Using Consumer with lambda
+        Consumer<String> consumerLambda = text -> System.out.println(text);
+        consumerLambda.accept("Using Consumer with lambda");
+
+        // 1c - Using Consumer with method reference
+        Consumer<String> consumerMethodRef = System.out::println;
+        consumerMethodRef.accept("Using Consumer with method reference");
     }
 
     private static void consumer() {
