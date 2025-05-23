@@ -1,17 +1,21 @@
 package stream;
 
-import java.util.List;
-import java.util.Arrays;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.TreeMap;
-import java.util.Set;
-import java.util.Map;
-import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-        lazyEvaluation();
+        //lazyEvaluation();
+
+        //printingFromFile();
+
+        generateInfiniteStream();
+
+        generateFiniteStream();
 
         //printingFromStream();
 
@@ -68,6 +72,31 @@ public class Main {
         System.out.println(list.stream().reduce(0, (a, b) -> a + b));
         System.out.println(list.stream().collect(Collectors.summarizingInt(x -> x)).getSum()); // 6 - Stream to IntSummaryStatistics and sum it
         System.out.println(list.stream().collect(Collectors.mapping(x -> x, Collectors.summarizingInt(x -> x))).getSum());
+    }
+
+    private static void printingFromFile() {
+        List<Cat> cats = new ArrayList<>();
+        try (Stream<String> stream = Files.lines(Paths.get("C:\\Users\\mailb\\OneDrive\\My Java\\1Z0_829\\prep\\Master_1Z0_829\\src\\stream\\Cats.txt"))) {
+            stream.forEach(line -> {
+                String[] data = line.split("/");
+                cats.add(new Cat(data[0], data[1]));
+            });
+        } catch (IOException ioException) {
+            throw new RuntimeException(ioException);
+        }
+
+        cats.forEach(System.out::println);
+    }
+
+    private static void generateFiniteStream() {
+        // Equivalent to for (T index=seed; hasNext.test(index); index = next.apply(index))
+        Stream<Integer> stream = Stream.iterate(1, n -> n < 10, n -> n + 1);
+        stream.forEach(System.out::println);
+    }
+
+    private static void generateInfiniteStream() {
+        Stream<Integer> stream = Stream.iterate(1,  n -> n + 1);
+        stream.forEach(System.out::println);
     }
 
     private static void grouping() {
@@ -193,3 +222,5 @@ public class Main {
         System.out.println(names.spaceSeparated); // Alex Florence Tommy Jonathan        
     }
 }
+
+record Cat(String name, String colour) {}
