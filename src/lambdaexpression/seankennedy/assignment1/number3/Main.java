@@ -1,11 +1,23 @@
-package stream.assignment1.number3;
+package lambdaexpression.seankennedy.assignment1.number3;
 
 import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
-        // 3a - Using custom functional interface - Evaluate
         predicate();
+    }
+
+    private static <T> boolean check(T t, Predicate<T> predicate) {
+        return predicate.test(t);
+    }
+
+    private record Person(String name, int age, double height) {}
+
+    private static void predicate() {
+        // 3a - Using custom functional interface - Evaluate
+        Evaluate<Integer> evaluate = i -> i < 0;
+        System.out.println(evaluate.test(-1));
+        System.out.println(evaluate.test(1));
 
         // 3b - Using Predicate functional interface with lambda
         Predicate<Integer> predicate = i -> i < 0;
@@ -21,19 +33,7 @@ public class Main {
         System.out.println(check(new Person("Ann", 13, 1.4), person -> person.age >= 18));
     }
 
-    private static <T> boolean check(T t, Predicate<T> predicate) {
-        return predicate.test(t);
-    }
-
-    private record Person(String name, int age, double height) {}
-
-    private static void predicate() {
-        Evaluate<Integer> evaluate = i -> i < 0;
-        System.out.println(evaluate.test(-1));
-        System.out.println(evaluate.test(1));
-    }
-
-    interface Evaluate<T> {
-        boolean test(T t);
+    interface Evaluate<Integer> {
+        boolean test(Integer i);
     }
 }
