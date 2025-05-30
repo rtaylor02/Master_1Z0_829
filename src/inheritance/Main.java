@@ -1,22 +1,27 @@
 package inheritance;
 
 /**
- * This code demonstrates
+ * This code demonstrates:
  * - only protected and public members are inherited by a subclass of a class
  * - constructors and static initialisers are not members and therefore not inherited
+ * - polymorphism only applies to instance method:
  */
 public class Main {
     public static void main(String[] args) {
-        A a = new B();
-        System.out.println("The number is: " + a.getaNumber());
-        
+        A a = new B(); // Polymorphism applies here (NOTE: only to instance methods)
+        System.out.println(a.getaNumber()); // 100
+        System.out.println(a.anotherNumber); // 111 - REMEMBER: polymorphism only applies to instance methods. Thus, it's A's member that is accessed.
+        System.out.println(a.staticNumber); // 11
+
         B b = new B();
-        System.out.println("The number is: " + b.getaNumber());
+        System.out.println(b.anotherNumber); // 222
+        System.out.println(b.staticNumber); // 22
+        System.out.println(b.getaNumber()); // 100
         b.incrementNumber();
-        System.out.println("The number is: " + b.getaNumber());
+        System.out.println(b.getaNumber()); // 101
         System.out.println("");
-        b.printMe();
-        B.printMe();
+        b.printMe(); // static method in class A
+        B.printMe(); // static method in class A
         System.out.println("==================");
 
         Foo foo = new Foo();
@@ -30,8 +35,11 @@ public class Main {
 }
 
 class A {
-    protected int aNumber = 100; // CE in class B if private. OK when package-private
-    
+    protected int aNumber = 100; // CE in class B.incrementNumber() if private. OK when package-private
+    int anotherNumber = 111;
+    static int staticNumber = 11;
+    int definedInA = 111111; // Inherited
+
     public int getaNumber() {
         return aNumber;
     }
@@ -43,6 +51,9 @@ class A {
 
 class B extends A {
     private int aNumber = 200;
+    int anotherNumber = 222;
+    static int staticNumber = 22;
+    int copyFromA = definedInA;
     
     public void incrementNumber() {
         aNumber++; // equivalent to this.aNumber++
