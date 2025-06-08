@@ -1,9 +1,7 @@
 package classdefandreachability.accesscontrolmodifiers.a;
 
-import classdefandreachability.accesscontrolmodifiers.b.Q;
-
 /**
- * @author Rodney Taylor (u228616)
+ * @author Rodney Taylor
  */
 public class P {
     // Static fields
@@ -24,12 +22,12 @@ public class P {
         //String enclosingClassPrivateName = privateName; // CE
         
         void show(P p) {
-            System.out.println(P.privateStaticName); // CE
+            System.out.println(P.privateStaticName);
             System.out.println(P.defaultStaticName);
             System.out.println(P.protectedStaticName);
             System.out.println(P.publicStaticName);
             
-            System.out.println(p.privateName); // CE
+            System.out.println(p.privateName);
             System.out.println(p.defaultName);
             System.out.println(p.protectedName);
             System.out.println(p.publicName);
@@ -54,12 +52,12 @@ public class P {
         String enclosingClassPrivateName = privateName;
         
         void show(P p) {
-            System.out.println(P.privateStaticName); // CE
+            System.out.println(P.privateStaticName);
             System.out.println(P.defaultStaticName);
             System.out.println(P.protectedStaticName);
             System.out.println(P.publicStaticName);
             
-            System.out.println(p.privateName); // CE
+            System.out.println(p.privateName);
             System.out.println(p.defaultName);
             System.out.println(p.protectedName);
             System.out.println(p.publicName);
