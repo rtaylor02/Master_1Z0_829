@@ -28,5 +28,14 @@ public class Main {
         System.out.println("cc: " + cc);
         System.out.println(bb);
         System.out.println(Integer.max(aa, bb));
+
+        /*
+        + (plus) operator:
+        - if any operand is a String, then L-value is a String
+        - with char, byte, short, int, then L-value is int, unless cast to any of the 4
+        - with long, float, double, then L-value is the biggest
+         */
+        var sum = (byte) 7 + (short)10 + 20 + 0Xff + 34L + 'A' + 2.5 + 0b10101;
+        System.out.println(sum); // sum is of type double
     }
 }
