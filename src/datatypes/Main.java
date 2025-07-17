@@ -4,6 +4,11 @@ package datatypes;
  * @author Rodney Taylor (u228616)
  */
 public class Main {
+    static boolean b;
+    static int[] ia = new int[1];
+    static char ch;
+    static boolean[] ba = new boolean[1];
+
     public static void main(String[] args) {
         byte i = 0x007F; // As long as it fits (-32768, 32767), integer literal assignment to short is ok
         short s = 0x7FFF; // As long as it fits (-32768, 32767), integer literal assignment to short is ok
@@ -34,7 +39,18 @@ public class Main {
         if (true || true && false) {
             System.out.println("section 2");
         }
+
+        // ==============================
+        canCharPointToArray();
     }
-    
+
+    private static void canCharPointToArray() {
+        var x = false;
+        if (b) {
+            x = (ch == ia[ch]);
+        } else x = (ba[ch] = b);
+        System.out.println(x + " " + ba[ch]); // false false
+    }
+
 }
 
